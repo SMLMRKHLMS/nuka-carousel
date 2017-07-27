@@ -18,8 +18,11 @@ const App = React.createClass({
           ref="carousel"
           data={this.setCarouselData.bind(this, 'carousel')}
           slideIndex={this.state.slideIndex}
-          afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}>
-          <img src="http://placehold.it/1000x400&text=slide1"/>
+          afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}
+          dragging={this.state.dragging}
+          swiping={this.state.swiping}
+        >
+          <a href="http://www.axs.com/series/4395/iheartradio-music-festival-tickets?skin=iheart" target="_blank" styles={{display:'block', width: '100%', height: '100%'}}><img src="http://placehold.it/1000x400&text=slide1"/></a>
           <img src="http://placehold.it/1000x400&text=slide2"/>
           <img src="http://placehold.it/1000x400&text=slide3"/>
           <img src="http://placehold.it/1000x400&text=slide4"/>

@@ -352,7 +352,6 @@ const Carousel = React.createClass({
   },
 
   handleClick(e) {
-    console.log('handleClick: ', e.target, this.state)
     if (this.state.dragging) {
       e.preventDefault();
       e.stopPropagation();

@@ -46,7 +46,7 @@ The demo can be launched on local machine via `webpack-dev-server`. Run the foll
 ./node_modules/.bin/webpack-dev-server
 
 ```
-Now, you can access the application on  your localhost at following url: <a href="http://localhost:8080/demo" target="_blank">Demo</a>
+Now, you can access the application on  your localhost at following url: <a href="http://localhost:9001/demo" target="_blank">Demo</a>
 
 ###Props
 
