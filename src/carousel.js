@@ -2,7 +2,6 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import PropTypes from 'prop-types';
 import tweenState from 'kw-react-tween-state';
 import decorators from './decorators';
 import assign from 'object-assign';
@@ -40,17 +39,17 @@ const Carousel = React.createClass({
   mixins: [tweenState.Mixin],
 
   propTypes: {
-    afterSlide: PropTypes.func,
-    autoplay: PropTypes.bool,
-    autoplayInterval: PropTypes.number,
-    beforeSlide: PropTypes.func,
-    cellAlign: PropTypes.oneOf(['left', 'center', 'right']),
-    cellSpacing: PropTypes.number,
-    data: PropTypes.func,
-    decorators: PropTypes.arrayOf(
-      PropTypes.shape({
-        component: PropTypes.func,
-        position: PropTypes.oneOf([
+    afterSlide: React.PropTypes.func,
+    autoplay: React.PropTypes.bool,
+    autoplayInterval: React.PropTypes.number,
+    beforeSlide: React.PropTypes.func,
+    cellAlign: React.PropTypes.oneOf(['left', 'center', 'right']),
+    cellSpacing: React.PropTypes.number,
+    data: React.PropTypes.func,
+    decorators: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        component: React.PropTypes.func,
+        position: React.PropTypes.oneOf([
           'TopLeft',
           'TopCenter',
           'TopRight',
@@ -61,31 +60,31 @@ const Carousel = React.createClass({
           'BottomCenter',
           'BottomRight'
         ]),
-        style: PropTypes.object
+        style: React.PropTypes.object
       })
     ),
-    dragging: PropTypes.bool,
-    easing: PropTypes.string,
-    edgeEasing: PropTypes.string,
-    framePadding: PropTypes.string,
-    frameOverflow: PropTypes.string,
-    initialSlideHeight: PropTypes.number,
-    initialSlideWidth: PropTypes.number,
-    slideIndex: PropTypes.number,
-    slidesToShow: PropTypes.number,
-    slidesToScroll: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.oneOf(['auto'])
+    dragging: React.PropTypes.bool,
+    easing: React.PropTypes.string,
+    edgeEasing: React.PropTypes.string,
+    framePadding: React.PropTypes.string,
+    frameOverflow: React.PropTypes.string,
+    initialSlideHeight: React.PropTypes.number,
+    initialSlideWidth: React.PropTypes.number,
+    slideIndex: React.PropTypes.number,
+    slidesToShow: React.PropTypes.number,
+    slidesToScroll: React.PropTypes.oneOfType([
+      React.PropTypes.number,
+      React.PropTypes.oneOf(['auto'])
     ]),
-    slideWidth: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
+    slideWidth: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
     ]),
-    speed: PropTypes.number,
-    swiping: PropTypes.bool,
-    vertical: PropTypes.bool,
-    width: PropTypes.string,
-    wrapAround: PropTypes.bool,
+    speed: React.PropTypes.number,
+    swiping: React.PropTypes.bool,
+    vertical: React.PropTypes.bool,
+    width: React.PropTypes.string,
+    wrapAround: React.PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -264,8 +263,6 @@ const Carousel = React.createClass({
     }
   },
 
-  clickSafe: true,
-
   getMouseEvents() {
     var self = this;
 
@@ -355,7 +352,8 @@ const Carousel = React.createClass({
   },
 
   handleClick(e) {
-    if (this.clickSafe === true) {
+    console.log('handleClick: ', e.target, this.state)
+    if (this.state.dragging) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -366,12 +364,6 @@ const Carousel = React.createClass({
   },
 
   handleSwipe(e) {
-    if (typeof (this.touchObject.length) !== 'undefined' && this.touchObject.length > 44) {
-      this.clickSafe = true;
-    } else {
-      this.clickSafe = false;
-    }
-
     var slidesToShow = this.props.slidesToShow;
     if (this.props.slidesToScroll === 'auto') {
       slidesToShow = this.state.slidesToScroll;
