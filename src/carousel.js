@@ -2,7 +2,6 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import PropTypes from 'prop-types';
 import tweenState from 'kw-react-tween-state';
 import decorators from './decorators';
 import assign from 'object-assign';
@@ -264,8 +263,6 @@ const Carousel = React.createClass({
     }
   },
 
-  clickSafe: true,
-
   getMouseEvents() {
     var self = this;
 
@@ -355,7 +352,7 @@ const Carousel = React.createClass({
   },
 
   handleClick(e) {
-    if (this.clickSafe === true) {
+    if (this.state.dragging) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -366,12 +363,6 @@ const Carousel = React.createClass({
   },
 
   handleSwipe(e) {
-    if (typeof (this.touchObject.length) !== 'undefined' && this.touchObject.length > 44) {
-      this.clickSafe = true;
-    } else {
-      this.clickSafe = false;
-    }
-
     var slidesToShow = this.props.slidesToShow;
     if (this.props.slidesToScroll === 'auto') {
       slidesToShow = this.state.slidesToScroll;

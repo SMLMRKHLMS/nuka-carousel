@@ -18,7 +18,10 @@ const App = React.createClass({
           ref="carousel"
           data={this.setCarouselData.bind(this, 'carousel')}
           slideIndex={this.state.slideIndex}
-          afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}>
+          afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}
+          dragging={this.state.dragging}
+          swiping={this.state.swiping}
+        >
           <img src="http://placehold.it/1000x400&text=slide1"/>
           <img src="http://placehold.it/1000x400&text=slide2"/>
           <img src="http://placehold.it/1000x400&text=slide3"/>
