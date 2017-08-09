@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDom from 'react-dom';
 import tweenState from 'kw-react-tween-state';
 import decorators from './decorators';
