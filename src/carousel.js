@@ -132,12 +132,10 @@ const Carousel = React.createClass({
   },
 
   componentDidMount() {
-    this.setDimensions();
+    setTimeout(this.setDimensions, 0);
     this.bindEvents();
     this.setExternalData();
-    if (this.props.autoplay) {
-      this.startAutoplay();
-    }
+    if (this.props.autoplay) this.startAutoplay();
   },
 
   componentWillReceiveProps(nextProps) {
